@@ -15,9 +15,6 @@ function DeleteThread({
   const pathname = usePathname();
   const router = useRouter();
 
-  console.log("currentUserId:", currentUserId);
-  console.log("authorId:", authorId);
-
   if (currentUserId !== authorId) return null;
 
   return (
@@ -30,7 +27,7 @@ function DeleteThread({
       onClick={async () => {
         await deleteThread(JSON.parse(threadId), pathname);
         if (!parentId || !isComment) {
-          router.push("/");
+          router.refresh();
         }
       }}
     />
