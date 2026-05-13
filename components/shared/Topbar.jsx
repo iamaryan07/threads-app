@@ -23,9 +23,9 @@ function Topbar() {
                 />
               </button>
             </SignOutButton> */}
-            {/* <SignOutButton redirectUrl="/sign-in">
-              <span>Logout</span>
-            </SignOutButton> */}
+            <SignOutButton redirectUrl="/sign-in">
+              <span className="text-light-2 mr-2">Logout</span>
+            </SignOutButton>
           </Show>
         </div>
 
