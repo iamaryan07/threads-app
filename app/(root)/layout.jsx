@@ -5,7 +5,7 @@ import "../globals.css";
 
 import LeftSidebar from "@/components/shared/LeftSidebar";
 import RightSidebar from "@/components/shared/RightSidebar";
-import Bottombar from "@/components/shared/Bottombar";
+import BottombarLinks from "@/components/shared/BottombarLinks";
 import Topbar from "@/components/shared/Topbar";
 
 const geistSans = Geist({
@@ -42,7 +42,7 @@ export default function RootLayout({ children }) {
             </div>
           </main>
 
-          <Bottombar />
+          <BottombarLinks />
         </body>
       </html>
     </ClerkProvider>
