@@ -5,6 +5,8 @@ import LeftSidebarLinks from "./LeftSidebarLinks";
 const LeftSidebar = async () => {
   const user = await currentUser();
 
+  if (!user) redirect("/sign-in");
+
   return <LeftSidebarLinks userId={user?.id} />;
 };
 

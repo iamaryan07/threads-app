@@ -10,7 +10,7 @@ const Page = async ({ params }) => {
   const user = await currentUser();
 
   if (!id || !user) {
-    return null;
+    redirect("/sign-in");
   }
 
   const userInfo = await fetchUser(user.id);
