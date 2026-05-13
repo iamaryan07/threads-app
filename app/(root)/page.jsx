@@ -2,6 +2,7 @@ import ThreadCard from "@/components/cards/ThreadCard";
 import { fetchPosts } from "@/lib/actions/thread.actions";
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
+import { fetchUser } from "@/lib/actions/user.actions";
 
 export default async function Home() {
   const result = await fetchPosts(1, 30);
@@ -9,7 +10,9 @@ export default async function Home() {
 
   if (!user) redirect("/sign-in");
 
-  console.log(result.posts);
+  const userInfo = await fetchUser(user.id);
+
+  if (!userInfo?.onboarded) redirect("/onboarding");
 
   return (
     <>
@@ -21,9 +24,6 @@ export default async function Home() {
         ) : (
           <>
             {result.posts.map((post) => {
-              console.log("POST:", post._id);
-              console.log("AUTHOR:", post.author);
-
               if (!post.author) return null;
 
               return (

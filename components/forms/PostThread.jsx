@@ -8,6 +8,10 @@ import { ThreadValidation } from "@/lib/validations/thread";
 
 import { Button } from "@/components/ui/button";
 
+import { Textarea } from "@/components/ui/textarea";
+import { createThread } from "@/lib/actions/thread.actions";
+import { useOrganization } from "@clerk/nextjs";
+
 import {
   Field,
   FieldError,
@@ -15,12 +19,10 @@ import {
   FieldLabel,
 } from "@/components/ui/field";
 
-import { Textarea } from "@/components/ui/textarea";
-import { createThread } from "@/lib/actions/thread.actions";
-
 const PostThread = ({ userId }) => {
   const router = useRouter();
   const pathname = usePathname();
+  const { organization } = useOrganization();
 
   const form = useForm({
     resolver: zodResolver(ThreadValidation),
@@ -34,8 +36,8 @@ const PostThread = ({ userId }) => {
     await createThread({
       text: values.thread,
       author: userId,
-      communityId: null,
       path: pathname,
+      communityId: organization ? organization.id : null,
     });
 
     router.push("/");
