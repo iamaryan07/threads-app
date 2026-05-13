@@ -30,14 +30,16 @@ export default function RootLayout({ children }) {
         <body className="min-h-screen antialiased">
           <Topbar />
 
-          <main className="flex flex-row">
+          <main className="mx-auto flex w-full max-w-[1800px]">
             <LeftSidebar />
 
-            <section className="main-container">
-              <div className="w-full max-w-4xl">{children}</div>
+            <section className="main-container flex-1">
+              <div className="w-full">{children}</div>
             </section>
 
-            <RightSidebar />
+            <div className="hidden xl:flex xl:min-w-[320px] xl:max-w-[360px] xl:flex-1">
+              <RightSidebar />
+            </div>
           </main>
 
           <Bottombar />

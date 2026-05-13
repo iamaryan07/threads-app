@@ -97,7 +97,7 @@ function ThreadCard({
         <DeleteThread
           threadId={JSON.stringify(id)}
           currentUserId={currentUserId.toString()}
-          authorId={author._id.toString()}
+          authorId={(author._id || author.id).toString()}
           parentId={parentId}
           isComment={isComment}
         />
