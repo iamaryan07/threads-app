@@ -6,22 +6,25 @@ import { usePathname } from "next/navigation";
 
 import { sidebarLinks } from "@/constants";
 
-function Bottombar() {
+function Bottombar({ userId }) {
   const pathname = usePathname();
 
   return (
     <section className="bottombar">
       <div className="bottombar_container">
         {sidebarLinks.map((link) => {
+          const route =
+            link.route === "/profile" ? `/profile/${userId}` : link.route;
+
           const isActive =
-            (pathname.includes(link.route) && link.route.length > 1) ||
-            pathname === link.route;
+            (pathname.includes(route) && route.length > 1) ||
+            pathname === route;
 
           return (
             <Link
-              href={link.route}
+              href={route}
               key={link.label}
-              className={`bottombar_link ${isActive && "bg-primary-500"}`}
+              className={`bottombar_link ${isActive ? "bg-primary-500" : ""}`}
             >
               <Image
                 src={link.imgURL}

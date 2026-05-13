@@ -13,7 +13,7 @@ function Topbar() {
       <div className="flex items-center gap-1">
         <div className="block md:hidden">
           <Show when="signed-in">
-            {/* <SignOutButton redirectUrl="/sign-in">
+            <SignOutButton redirectUrl="/sign-in">
               <button type="button" className="flex cursor-pointer gap-4 p-4">
                 <Image
                   src="/assets/logout.svg"
@@ -22,10 +22,10 @@ function Topbar() {
                   height={24}
                 />
               </button>
-            </SignOutButton> */}
-            <SignOutButton redirectUrl="/sign-in">
-              <span className="text-light-2 mr-2">Logout</span>
             </SignOutButton>
+            {/* <SignOutButton redirectUrl="/sign-in">
+              <span className="text-light-2 mr-2">Logout</span>
+            </SignOutButton> */}
           </Show>
         </div>
 
